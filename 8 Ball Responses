@@ -1,0 +1,38 @@
+import random
+responses = []
+
+file = open("8_ball_responses.txt", "w+")
+file.writelines("Yes, of course!")
+file.writelines("\nWithout a doubt, yes.")
+file.writelines("\nYou can count on it.")
+file.writelines("\nFor sure!")
+file.writelines("\nAsk me later.")
+file.writelines("\nI'm not sure.")
+file.writelines("\nI can't tell you right now.")
+file.writelines("\nI'll tell you after my nap.")
+file.writelines("\nNo way!")
+file.writelines("\nI don't think so.")
+file.close()
+
+file = open("8_ball_responses.txt", "r")
+for line in file:
+    responses.append(str(line))
+
+name = input("Hello! Welcome to Magic 8 Ball! What is your name? ")
+print('Hello ' + name)
+
+def questions():
+    userask = input("Enter a question: ")
+    while userask != (""):
+        print(responses[random.randint(0, len(responses)-1)])
+        break
+    reanswer()
+
+def reanswer():
+    opt = int(input("Please enter 0 to continue or -1 to terminate: "))
+    if opt == 0:
+        questions()
+    else:
+        print("Good bye, see you next time!")
+
+reanswer()
